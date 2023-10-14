@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Principal from "@dfinity/principal";
+import {Principal} from "@dfinity/principal";
 import {token} from "../../../declarations/token";
 function Transfer() {
   
