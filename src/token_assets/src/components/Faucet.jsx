@@ -2,8 +2,7 @@ import React, {useState}from "react";
 import {token, canisterId, createActor} from "../../../declarations/token";
 import { AuthClient } from "@dfinity/auth-client";
 
-
-function Faucet() {
+function Faucet(props) {
   const [isDisabled, setDisabled]=useState(false);
   const [buttonText, setText]=useState("Gimme gimme");
 
@@ -32,7 +31,7 @@ function Faucet() {
         </span>
         Faucet
       </h2>
-      <label>Get your free SHINX tokens here! Claim 10,000 SHINX coins to your account.</label>
+      <label>Get your free SHINX tokens here! Claim 10,000 SHINX coins to {props.userPrincipal} .</label>
       <p className="trade-buttons">
         <button 
         id="btn-payout" 
