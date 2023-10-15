@@ -5,8 +5,8 @@ import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
 import Iter "mo:base/Iter";
 actor Token{
-    Debug.print("Hello");
 
+    Debug.print("Hello");
 
     let owner: Principal=Principal.fromText("44hes-5bv3t-dwisd-5lm73-26gsw-xyjyh-h3s3s-mjr3y-5ff3y-a6rbx-wqe");
     let totalSupply: Nat=1000000000;
@@ -15,10 +15,10 @@ actor Token{
     private stable var balanceEntries: [(Principal, Nat)]=[];
 
     private var balances=HashMap.HashMap<Principal, Nat>(1, Principal.equal, Principal.hash);
-     if (balances.size() < 1) {
+    if (balances.size() < 1) {
         balances.put(owner, totalSupply);
     };
-
+    
     public query func balanceOf(who:Principal):async Nat {
         let balance: Nat = switch (balances.get(who)){
             case null 0;
@@ -62,10 +62,9 @@ actor Token{
            
             return "Success";
         }else{
-            return "Insufficient Funds";
+            return "Insufficient funds";
         }
     };
-
     system func preupgrade(){
         balanceEntries := Iter.toArray(balances.entries());
     };
@@ -75,6 +74,7 @@ actor Token{
     if (balances.size() < 1) {
         balances.put(owner, totalSupply);
     }
-   };
+};
+
 
 };
